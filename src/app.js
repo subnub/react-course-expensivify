@@ -24,10 +24,6 @@ const unsubscribe = store.subscribe(() => {
 
 })
 
-store.dispatch(addExpense({desc:"Water bill", amount: 45}));
-store.dispatch(addExpense({desc:"Rent", amount: 104005}));
-store.dispatch(addExpense({desc:"Gas bill", amount: 200, createdAt: 1000}));
-//store.dispatch(setTextFilter("Gas"));
 
 const jsx = (
     <Provider store={store}>
