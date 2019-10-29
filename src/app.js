@@ -24,6 +24,7 @@ const unsubscribe = store.subscribe(() => {
 
 })
 
+console.log("test")
 
 const jsx = (
     <Provider store={store}>
