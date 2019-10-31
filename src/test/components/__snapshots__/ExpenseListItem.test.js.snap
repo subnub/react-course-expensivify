@@ -10,9 +10,9 @@ exports[`Should render expense item component 1`] = `
     </h3>
   </[object Object]>
   <p>
-    195
-     - 
-    0
+    $1.95
+    -
+    December 31st 1969
   </p>
 </div>
 `;
