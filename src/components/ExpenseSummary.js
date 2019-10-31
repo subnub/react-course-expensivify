@@ -5,7 +5,7 @@ import expenseTotal from "../selectors/expenseTotal"
 import numeral from "numeral"
 
 
-const expensesSummary = (props) => {
+export const ExpensesSummary = (props) => {
 
     const total = expenseTotal(props.expenses)
     const totalFormated = numeral(total / 100).format("$0,0.00")
@@ -25,4 +25,4 @@ const connectPropToStore = (state) => ({
     
 })
 
-export default connect(connectPropToStore)(expensesSummary)
+export default connect(connectPropToStore)(ExpensesSummary)
