@@ -13,12 +13,12 @@ export class Edit extends React.Component {
 
         console.log("submit", this.props.expense.id)
         this.props.dispatch(startEditExpense(this.props.expense.id,expense))
-        this.props.history.push("/")
+        this.props.history.push("/dashboard")
     }
 
     onClick = (e) => {
         this.props.dispatch(startRemoveExpense({id: this.props.expense.id}))
-        this.props.history.push("/")
+        this.props.history.push("/dashboard")
     }
 
     render() {

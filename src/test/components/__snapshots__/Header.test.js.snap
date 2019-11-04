@@ -10,22 +10,15 @@ exports[`Should render header correctly 1`] = `
   >
     <[object Object]
       activeClassName="is_active"
-      exact={true}
-      to="/"
+      to="/dashboard"
     >
-      Home
+      Dashboard
     </[object Object]>
     <[object Object]
       activeClassName="is_active"
       to="/create"
     >
       Create
-    </[object Object]>
-    <[object Object]
-      activeClassName="is_active"
-      to="help"
-    >
-      Help
     </[object Object]>
     <button>
       Logout
