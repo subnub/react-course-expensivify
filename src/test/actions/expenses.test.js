@@ -1,10 +1,26 @@
-import {addExpense, startAddExpense,editExpense, removeExpense} from "../../actions/expenses"
+import {addExpense, startAddExpense,editExpense, removeExpense, setExpenses, startSetExpenses, startRemoveExpense, startEditExpense} from "../../actions/expenses"
 import expenses from "../fixtures/expenses"
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import {database} from "../../firebase/firebase"
 
 const createMockStore = configureMockStore([thunk])
+
+beforeEach((done) => {
+
+    database.ref().remove();
+    
+    expenses.forEach(({id, desc, note, amount, createdAt}) => {
+        database.ref("expenses").child(id).set({
+            desc,
+            note,
+            amount,
+            createdAt
+        }).then(() => {
+            done();
+        })
+    })
+})
 
 test("should set up remove expense action object", () => {
     const action = removeExpense({id: "123abc"})
@@ -97,6 +113,64 @@ test("should add expense to database and store with default data", (done) => {
         done();
     })
 })
+
+test("should set up set expences action generator", () => {
+    const action = setExpenses(expenses);
+
+    expect(action).toEqual({
+        type: "SET_EXPENSES", 
+        expenses
+    })
+})
+
+test("should fetch expences array", (done) => {
+
+    const store = createMockStore({})
+
+    store.dispatch(startSetExpenses()).then(() => {
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual({
+            type: "SET_EXPENSES", 
+            expenses
+            
+        })
+
+        done()
+    })
+})
+
+test("should remove an expense from firebase", (done) => {
+
+    const store = createMockStore({});
+
+    const removedExpense = expenses[0];
+
+    store.dispatch(startRemoveExpense({id:removedExpense.id})).then(() => {
+
+        const actions = store.getActions()
+
+        expect(actions[0]).toEqual({
+            type: "REMOVE_EXPENSE", 
+            id: removedExpense.id
+        })
+
+        return database.ref("expenses").child(removedExpense.id).once("value")
+
+        
+    }).then((snapshot) => {
+        expect(snapshot.val()).toBeFalsy();
+        done();
+    })
+})
+
+// test("Should edit an expense", (done) => {
+
+//     const store = createMockStore({});
+
+
+//     store.dispatch({})
+// })
 
 // test("should set up add expense action object with default values", () => {
     

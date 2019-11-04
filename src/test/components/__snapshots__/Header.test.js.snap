@@ -27,6 +27,9 @@ exports[`Should render header correctly 1`] = `
     >
       Help
     </[object Object]>
+    <button>
+      Logout
+    </button>
   </header>
 </div>
 `;

@@ -1,6 +1,7 @@
 import uuid from "uuid"
 import {database} from "../firebase/firebase"
 
+
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
     type:"ADD_EXPENSE",
@@ -33,6 +34,15 @@ export const removeExpense = ({id} = {}) => ({
     id
 })
 
+export const startRemoveExpense = ({id} = {}) => {
+
+    return (dispatch) => {
+        return database.ref("expenses").child(id).remove().then(() => {
+            dispatch(removeExpense({id}))
+        })
+    }
+}
+
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
     type: "EDIT_EXPENSE",
@@ -40,3 +50,36 @@ export const editExpense = (id, updates) => ({
     updates
 })
 
+export const startEditExpense = (id, updates) => {
+
+    return (dispatch) => {
+        database.ref("expenses").child(id).set({...updates}).then(() => {
+            dispatch(editExpense(id, updates));
+        })
+    }
+}
+
+export const setExpenses = (expenses) => ({
+    type: "SET_EXPENSES",
+    expenses
+})
+
+export const startSetExpenses = () => {
+
+    return (dispatch) => {
+        return database.ref("expenses").once("value").then((snapshot) => {
+
+            const dataExpenses = []
+
+            snapshot.forEach((data) => {
+                
+                dataExpenses.push({
+                    id: data.key,
+                    ...data.val()
+                });
+            })
+            
+            dispatch(setExpenses(dataExpenses))
+        })
+    }
+}
