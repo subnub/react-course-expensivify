@@ -4,7 +4,7 @@ import filtersReducer from "../reducers/filter";
 import authReducer from "../reducers/auth"
 import thunk from "redux-thunk"
 
-const composeEnchancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//const composeEnchancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
 
