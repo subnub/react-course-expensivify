@@ -22,29 +22,44 @@ class ExpenesListFilters extends React.Component {
 
     render() {
         return (
-            <div>
-        <input type="text" value={this.props.filter.text} onChange={(e) => {
-            this.props.dispatch(setTextFilter(e.target.value))
-        }}/>
-        <select value={this.props.filter.sortBy} onChange={(e) => {
-            
-            e.target.value === "date" ? this.props.dispatch(sortByDate()) 
-            : this.props.dispatch(sortByAmount());
+        <div className="content-container">
+            <div className="input-group">
 
-        }}>
-            <option value="date">Date</option>
-            <option value="amount">Amount</option>
-        </select>
-        <DateRangePicker 
-            startDate={this.props.filter.startDate}
-            endDate={this.props.filter.endDate}
-            onDatesChange={this.onDatesChange}
-            focusedInput={this.state.calanderFocus}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-            showClearDates={true}
-        />
+                <div className="input-group__item">
+                    <input className="text-input" 
+                    placeholder="Search Expenses"
+                    type="text" value={this.props.filter.text} onChange={(e) => {
+                        this.props.dispatch(setTextFilter(e.target.value))
+                    }}/>
+                </div>
+
+                <div className="input-group__item">
+                    <select className="select" 
+                    value={this.props.filter.sortBy} onChange={(e) => {
+                
+                        e.target.value === "date" ? this.props.dispatch(sortByDate()) 
+                        : this.props.dispatch(sortByAmount());
+            
+                    }}>
+                    <option value="date">Date</option>
+                    <option value="amount">Amount</option>
+                    </select>
+                </div>
+
+                <div className="input-group__item">
+                    <DateRangePicker 
+                    startDate={this.props.filter.startDate}
+                    endDate={this.props.filter.endDate}
+                    onDatesChange={this.onDatesChange}
+                    focusedInput={this.state.calanderFocus}
+                    onFocusChange={this.onFocusChange}
+                    numberOfMonths={1}
+                    isOutsideRange={() => false}
+                    showClearDates={true}
+                    />
+                </div>
+            
+            </div>
 
         </div> 
         )
