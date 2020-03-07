@@ -19,14 +19,14 @@ Required:
 Enviroment Variable:
 These should be located at the root of the project, with the following naming convention (env.production, env.development, env.test). Then enter the following firebase details into the file.
 
-FIREBASE_API_KEY=
-FIREBASE_AUTH_DOMAIN=
-FIREBASE_DATABASE_URL=
-FIREBASE_PROJECT_ID=
-FIREBASE_STORAGE_BUCKET=
-FIREBASE_MESSAGE_SENDER_ID=
-FIREBASE_APP_ID=
-FIREBASE_MEASUREMENT_ID=
+-FIREBASE_API_KEY=
+-FIREBASE_AUTH_DOMAIN=
+-FIREBASE_DATABASE_URL=
+-FIREBASE_PROJECT_ID=
+-FIREBASE_STORAGE_BUCKET=
+-FIREBASE_MESSAGE_SENDER_ID=
+-FIREBASE_APP_ID=
+-FIREBASE_MEASUREMENT_ID=
 
 Setup:
 - "npm install", Installs all dependencies.
