@@ -64,7 +64,7 @@ module.exports = (env) => {
                 "process.env.FIREBASE_MEASUREMENT_ID": JSON.stringify(process.env.FIREBASE_MEASUREMENT_ID),
             })
         ],
-        devtool: isProduction ? "source-map" : "inline-source-map",
+        devtool: 'inline-source-map',
         devServer: {
             contentBase: path.join(__dirname, "public"),
             historyApiFallback: true,
