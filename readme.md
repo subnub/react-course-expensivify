@@ -2,12 +2,7 @@
 
 Expensify is a React based expense tracker, it uses firebase as a backend. 
 
-<<<<<<< HEAD
 Demo: https://react-course-expensivify.herokuapp.com/
-=======
-View the wiki for more detailed feature list with images:
-- https://github.com/subnub/react-course-expensivify/wiki
->>>>>>> 5cf62ed81474ac376e34962bc8861950bfc3be24
 
 Expensify Featues:
 - Create New Expenses
